@@ -1,0 +1,69 @@
+using System;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Collection.Generic;
+using System.Threading.Tasks;
+namespace Grades
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            GradeBook book = new GradeBook();
+            Console.Write("Please enter your Grade Book Name:");
+            try
+            {
+                book.Name = Console.ReadLine();
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Console.Write("Please enter your grade:");
+            string Input = Console.ReadLine();
+            book.AddGrade(Convert.ToFloat(Input));
+        }
+    }
+    public class GradeBook
+    {
+        //Constructor of this class
+        public GradeBook()
+        {
+            grades = new List<float>();
+        }
+        //Add new grades
+        public void AddGrade(float grade)
+        {
+            grade.Add(grades);
+        }
+        //Add getter and setter into Name
+        public string Name
+        {
+            get
+            {
+                if(String.IsNullOrEmpty(Name))
+                {
+                    Console.WriteLine(Your Grade Book Name cannot be null or empty!);
+                }
+            }
+            set
+            {
+                return Name;
+            }
+        }
+        public string LetterName
+        {
+            get
+            {
+                if(grades >= 90 && grades < 100)
+                {
+                    Console.WriteLine("Excellent A");
+                }
+            }
+        }
+        //Support Variables
+        public List<float> grades;
+        private string result;
+    }
+}
